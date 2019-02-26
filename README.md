@@ -40,6 +40,11 @@ POST http://localhost:3030/users
     "password": "password"
   }
 }
+# bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"user": {"email": "casl@medium.com","password": "password"}}' \
+  http://localhost:3030/users
 ```
 
 2. Create new session
@@ -52,6 +57,11 @@ POST http://localhost:3030/session
     "password": "password"
   }
 }
+#
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"session": {"email": "casl@medium.com","password": "password"}}' \
+  http://localhost:3030/session
 
 201 Created
 { "accessToken": "...." }
@@ -86,6 +96,15 @@ to create a post you send
     "....": "...."
   }
 }
+```
+
+### Create new posts example
+```bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNzVhZWQ2OGQ5MTdiNzJhYmYyZjlmNCIsImlhdCI6MTU1MTIxNjQwNCwiYXVkIjoiY2FzbC5jb20iLCJpc3MiOiJDQVNMLkV4cHJlc3MifQ.G0E-J2sWtw1WSIKVZeBHpVZiDHmXyBcPa_3HkwXWGnI" \
+  --data '{"post": { "author": "me", "title": "blabla", "text": "blabla"}}' \
+  http://localhost:3030/posts
 ```
 
 [casl-express-example]: https://medium.com/@sergiy.stotskiy/authorization-with-casl-in-express-app-d94eb2e2b73b
